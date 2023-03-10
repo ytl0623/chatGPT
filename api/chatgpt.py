@@ -22,10 +22,10 @@ class ChatGPT:
         # Find the first response from the chatbot that has text in it (some responses may not have text)
         for choice in response.choices:
             if "text" in choice:
-                return choice.text
+                return choice.text.replace('\n', '')
 
         # If no response with text is found, return the first response's content (which may be empty)
-        return response.choices[0].message.content
+        return response.choices[0].message.content.replace('\n', '')
     
     
     def add_msg(self, text):
