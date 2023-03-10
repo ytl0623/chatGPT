@@ -15,7 +15,7 @@ class ChatGPT:
             stop=None,              # The stopping sequence for the generated response, if any (not used here)
             temperature=0.7,        # The "creativity" of the generated response (higher temperature = more creative)
         )
-        return user_input
+        return "123"
         # Find the first response from the chatbot that has text in it (some responses may not have text)
         for choice in response.choices:
             if "text" in choice:
