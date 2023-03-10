@@ -5,7 +5,6 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage
 from api.chatgpt import ChatGPT
 
 import os
-import json
 
 line_bot_api = LineBotApi(os.getenv("LINE_CHANNEL_ACCESS_TOKEN"))
 line_handler = WebhookHandler(os.getenv("LINE_CHANNEL_SECRET"))
@@ -66,8 +65,7 @@ def handle_message(event):
     
     if working_status:
         #reply_msg = chatgpt.get_response(event.message.text)
-        reply_msg = json.dumps(event.message.text)
-        reply_msg = type(event.message.text)
+        reply_msg = type("123")
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_msg))
