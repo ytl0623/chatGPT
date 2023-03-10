@@ -16,20 +16,24 @@ chatgpt = ChatGPT()
 # domain root
 @app.route('/')
 def home():
-    return 'Hello, World!!!'
+    return 'Hello, World'
 
 @app.route("/webhook", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
+    
     # get request body as text
     body = request.get_data(as_text=True)
+    
     app.logger.info("Request body: " + body)
+    
     # handle webhook body
     try:
         line_handler.handle(body, signature)
     except InvalidSignatureError:
         abort(400)
+        
     return 'OK'
 
 
@@ -40,27 +44,28 @@ def handle_message(event):
     if event.message.type != "text":
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Error Message"))
+            TextSendMessage(text="Not supported input"))
         return
     
     if event.message.text == "啟動":
         working_status = True
+        
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Start"))
+            TextSendMessage(text="123"))
         return
 
     if event.message.text == "安靜":
         working_status = False
+        
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="End"))
+            TextSendMessage(text="456"))
         return
     
     if working_status:
-        chatgpt.add_msg(f"Human:{event.message.text}?\n")
-        reply_msg = chatgpt.get_response(event.message.text).replace("AI:", "", 1)
-        chatgpt.add_msg(f"AI:{reply_msg}\n")
+        reply_msg = chatgpt.get_response(event.message.text)
+        
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_msg))
