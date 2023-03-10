@@ -7,6 +7,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 class ChatGPT:
     def get_response(user_input):
+        return "123"
         # Use OpenAI's ChatCompletion API to get the chatbot's response
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",  # The name of the OpenAI chatbot model to use
