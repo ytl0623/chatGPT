@@ -47,7 +47,7 @@ def handle_message(event):
             TextSendMessage(text="Not supported input"))
         return
     
-    if event.message.text == "啟動":
+    if event.message.text == "on":
         working_status = True
         
         line_bot_api.reply_message(
@@ -55,7 +55,7 @@ def handle_message(event):
             TextSendMessage(text="123"))
         return
 
-    if event.message.text == "安靜":
+    if event.message.text == "off":
         working_status = False
         
         line_bot_api.reply_message(
@@ -65,7 +65,7 @@ def handle_message(event):
     
     if working_status:
         reply_msg = chatgpt.get_response(event.message.text)
-        print(reply_msg)
+        return reply_msg
         print(type(reply_msg))
         
         line_bot_api.reply_message(
