@@ -64,8 +64,8 @@ def handle_message(event):
         return
     
     if working_status:
-        #reply_msg = chatgpt.get_response(event.message.text)
-        reply_msg = type("123")
+        reply_msg = chatgpt.get_response(event.message.text)
+        
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_msg))
