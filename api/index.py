@@ -52,7 +52,7 @@ def handle_message(event):
         
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="123"))
+            TextSendMessage(text="1234"))
         return
 
     if event.message.text == "off":
@@ -60,7 +60,7 @@ def handle_message(event):
         
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="456"))
+            TextSendMessage(text="4567"))
         return
     
     if working_status:
@@ -68,7 +68,7 @@ def handle_message(event):
         
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=type(reply_msg)))
+            TextSendMessage(text=reply_msg))
 
 
 if __name__ == "__main__":
