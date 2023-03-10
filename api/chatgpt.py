@@ -19,10 +19,10 @@ class ChatGPT:
         # Find the first response from the chatbot that has text in it (some responses may not have text)
         for choice in response.choices:
             if "text" in choice:
-                return choice.text
+                return "123"  #choice.text
 
         # If no response with text is found, return the first response's content (which may be empty)
-        return response.choices[0].message.content
+        return "456"  #response.choices[0].message.content
     
     
     
