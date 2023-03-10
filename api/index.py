@@ -59,7 +59,7 @@ def handle_message(event):
     
     if working_status:
         chatgpt.add_msg(f"Human:{event.message.text}?\n")
-        reply_msg = chatgpt.get_response().replace("AI:", "", 1)
+        reply_msg = chatgpt.get_response(event.message.text).replace("AI:", "", 1)
         chatgpt.add_msg(f"AI:{reply_msg}\n")
         line_bot_api.reply_message(
             event.reply_token,
