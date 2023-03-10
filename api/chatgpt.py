@@ -28,6 +28,5 @@ class ChatGPT:
         return response.choices[0].message.content
     
     
-    
     def add_msg(self, text):
         self.message = text
