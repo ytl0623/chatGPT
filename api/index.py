@@ -64,13 +64,11 @@ def handle_message(event):
         return
     
     if working_status:
-        reply_msg = chatgpt.get_response(event.message.text)
-        return reply_msg
-        print(type(reply_msg))
+        #reply_msg = chatgpt.get_response(event.message.text)
         
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=reply_msg))
+            TextSendMessage(text="777"))
 
 
 if __name__ == "__main__":
